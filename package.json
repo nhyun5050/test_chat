@@ -1,0 +1,22 @@
+{
+  "name": "test_chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhyun5050/test_chat.git"
+  },
+  "author": "nhyun5050",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhyun5050/test_chat/issues"
+  },
+  "homepage": "https://github.com/nhyun5050/test_chat#readme",
+  "dependencies": {
+    "socket.io": "^2.3.0"
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <input id="name" class="name" type="text" readonly>
+        <button onclick="rename_submit();">닉네임 변경</button>
+        <input id="message" onkeydown="JavaScript:Enter_Check();" class="message" type="text" autocomplete="off">
+        <button onclick="chat_submit();">전송</button>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+var socket = io();
+socket.on('receive message', function(msg) {
+	var P_Tag = document.createElement('p');
+	var Text = document.createTextNode(msg);
+	P_Tag.appendChild(Text);
+	document.getElementById('chatLog').appendChild(P_Tag);
+	var objDiv = document.getElementById("chatLog");
+	objDiv.scrollTop = objDiv.scrollHeight;
+});
+socket.on('change name', function(name) {
+	$('#name').val(name);
+});
+function chat_submit() {
+	socket.emit('send message', $('#name').val(), $('#message').val());
+	$('#message').val("");
+	$("#message").focus();
+	e.preventDefault();
+}
+function rename_submit() {
+	socket.emit('rename', $('#name').val(), $('#message').val());
+	$('#message').val("");
+	$("#message").focus();
+	e.preventDefault();
+}
+function Enter_Check(){
+	if(event.keyCode == 13){
+		chat_submit();
+		document.getElementById('message').value = "";
+	}
+}
+</script>
+</html>

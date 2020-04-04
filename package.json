@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nhyun5050/test_chat#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "socket.io": "^2.3.0"
   }
 }
